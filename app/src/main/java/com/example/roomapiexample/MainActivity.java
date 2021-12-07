@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class MainActivity extends AppCompatActivity {
     AppDatabase db;
     TextView textViewID;
@@ -36,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void saveButton(View v){
         //Room API calls should be in a separate thread
-        AsyncTask.execute(new Runnable() {
+        ExecutorService executorService = Executors.newFixedThreadPool(1);
+        executorService.execute(new Runnable() {
             @Override
             public void run() {
                 User user = new User();
@@ -50,7 +54,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void searchButton(View v){
         //Room API calls should be in a separate thread
-        AsyncTask.execute(new Runnable() {
+        ExecutorService executorService = Executors.newFixedThreadPool(1);
+        executorService.execute(new Runnable() {
             @Override
             public void run() {
                 UserDao userDao = db.userDao();

@@ -13,10 +13,10 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity {
-    AppDatabase db;
-    TextView textViewID;
-    EditText editTextName;
-    EditText editTextEmail;
+    private AppDatabase db;
+    private TextView textViewID;
+    private EditText editTextName;
+    private EditText editTextEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
         editTextEmail = findViewById(R.id.eTEmail);
 
         db = Room.databaseBuilder(this, AppDatabase.class, "User").build();
-
     }
 
     @Override
